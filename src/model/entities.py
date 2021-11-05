@@ -6,8 +6,8 @@ Base = declarative_base()
 metadata = Base.metadata
 
 
-class TbAddres(Base):
-    __tablename__ = 'tb_address'
+class Addres(Base):
+    __tablename__ = 'address'
 
     id_address = Column(Integer, primary_key=True)
     street = Column(String(45), nullable=False)
@@ -19,8 +19,8 @@ class TbAddres(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbAutismLevel(Base):
-    __tablename__ = 'tb_autism_level'
+class AutismLevel(Base):
+    __tablename__ = 'autism_level'
 
     id_autism_level = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
@@ -29,8 +29,8 @@ class TbAutismLevel(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbCity(Base):
-    __tablename__ = 'tb_city'
+class City(Base):
+    __tablename__ = 'city'
 
     id_city = Column(Integer, primary_key=True)
     id_state = Column(Integer, nullable=False, index=True)
@@ -39,15 +39,15 @@ class TbCity(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-t_tb_consultation_document = Table(
-    'tb_consultation_document', metadata,
-    Column('tb_consultation_id_consultation', Integer, nullable=False, index=True),
+t_consultation_document = Table(
+    'consultation_document', metadata,
+    Column('consultation_id_consultation', Integer, nullable=False, index=True),
     Column('document_id_document', Integer, nullable=False, index=True)
 )
 
 
-class TbCountry(Base):
-    __tablename__ = 'tb_country'
+class Country(Base):
+    __tablename__ = 'country'
 
     id_country = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
@@ -56,8 +56,8 @@ class TbCountry(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbDay(Base):
-    __tablename__ = 'tb_days'
+class Day(Base):
+    __tablename__ = 'days'
 
     id_day = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
@@ -65,8 +65,8 @@ class TbDay(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbDaysAvailability(Base):
-    __tablename__ = 'tb_days_availability'
+class DaysAvailability(Base):
+    __tablename__ = 'days_availability'
 
     id_days_availability = Column(Integer, primary_key=True)
     id_day = Column(Integer, nullable=False, index=True)
@@ -76,8 +76,8 @@ class TbDaysAvailability(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbDocument(Base):
-    __tablename__ = 'tb_document'
+class Document(Base):
+    __tablename__ = 'document'
 
     id_document = Column(Integer, primary_key=True)
     url = Column(String(100), nullable=False, comment='Endereço do HTML do certificado')
@@ -85,8 +85,8 @@ class TbDocument(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbPatient(Base):
-    __tablename__ = 'tb_patient'
+class Patient(Base):
+    __tablename__ = 'patient'
 
     id_patient = Column(Integer, primary_key=True)
     deficiency = Column(String(255), nullable=False)
@@ -101,8 +101,8 @@ class TbPatient(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbPerson(Base):
-    __tablename__ = 'tb_person'
+class Person(Base):
+    __tablename__ = 'person'
 
     id_person = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
@@ -114,8 +114,8 @@ class TbPerson(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbState(Base):
-    __tablename__ = 'tb_state'
+class State(Base):
+    __tablename__ = 'state'
 
     id_state = Column(Integer, primary_key=True)
     id_country = Column(Integer, nullable=False, index=True)
@@ -125,8 +125,8 @@ class TbState(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbTalk(Base):
-    __tablename__ = 'tb_talk'
+class Talk(Base):
+    __tablename__ = 'talk'
 
     id_talk = Column(Integer, primary_key=True)
     type_talk = Column(String(1), nullable=False, comment='Fisica ou online')
@@ -137,8 +137,8 @@ class TbTalk(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbTalkAddres(Base):
-    __tablename__ = 'tb_talk_address'
+class TalkAddres(Base):
+    __tablename__ = 'talk_address'
 
     id_talk_address = Column(Integer, primary_key=True)
     id_address = Column(Integer, nullable=False, index=True)
@@ -147,8 +147,8 @@ class TbTalkAddres(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbTalkTheme(Base):
-    __tablename__ = 'tb_talk_theme'
+class TalkTheme(Base):
+    __tablename__ = 'talk_theme'
 
     id_talk_theme = Column(Integer, primary_key=True)
     id_theme = Column(Integer, nullable=False, index=True)
@@ -157,8 +157,8 @@ class TbTalkTheme(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbTalkVoluntary(Base):
-    __tablename__ = 'tb_talk_voluntary'
+class TalkVoluntary(Base):
+    __tablename__ = 'talk_voluntary'
 
     id_talk_voluntary = Column(Integer, primary_key=True)
     id_voluntary = Column(Integer, nullable=False, index=True)
@@ -167,8 +167,8 @@ class TbTalkVoluntary(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbTheme(Base):
-    __tablename__ = 'tb_theme'
+class Theme(Base):
+    __tablename__ = 'theme'
 
     id_theme = Column(Integer, primary_key=True)
     theme = Column(String(45), nullable=False)
@@ -177,28 +177,36 @@ class TbTheme(Base):
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
-class TbTherapist(Base):
-    __tablename__ = 'tb_therapist'
+class Therapist(Base):
+    __tablename__ = 'therapist'
 
     id_consultation = Column(Integer, primary_key=True)
     document = Column(String(45))
     voluntary = Column(CHAR(1), nullable=False)
     amount_paid = Column(DECIMAL(10, 0))
     specialization = Column(String(50), nullable=False)
-    tb_address_id_address = Column(Integer, nullable=False, index=True)
-    tb_user_id_user = Column(Integer, nullable=False, index=True)
+    address_id_address = Column(Integer, nullable=False, index=True)
+    user_id_user = Column(Integer, nullable=False, index=True)
 
 
-class TbUser(Base):
-    __tablename__ = 'tb_user'
+class TherapistAttachment(Base):
+    __tablename__ = 'therapist_attachment'
+
+    id_therapist_attachment = Column(Integer, primary_key=True)
+    therapist_id_consultation = Column(Integer, nullable=False, index=True)
+    document_id_document = Column(Integer, nullable=False, index=True)
+
+
+class User(Base):
+    __tablename__ = 'user'
 
     id_user = Column(Integer, primary_key=True)
     login = Column(String(25), nullable=False)
     password = Column(String(232), nullable=False)
 
 
-class TbVoluntary(Base):
-    __tablename__ = 'tb_voluntary'
+class Voluntary(Base):
+    __tablename__ = 'voluntary'
 
     id_voluntary = Column(Integer, primary_key=True)
     id_person = Column(Integer, nullable=False, index=True)
@@ -207,11 +215,3 @@ class TbVoluntary(Base):
     description_occupation = Column(Text)
     created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
-
-
-class TherapistAttachment(Base):
-    __tablename__ = 'therapist_attachment'
-
-    id_therapist_attachment = Column(Integer, primary_key=True)
-    tb_therapist_id_consultation = Column(Integer, nullable=False, index=True)
-    document_id_document = Column(Integer, nullable=False, index=True)

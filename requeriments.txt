@@ -1,3 +1,7 @@
 flask
 flask_restplus
 Werkzeug==0.16.0
+pymysql
+sqlacodegen
+sqlalchemy
+flask_restful
