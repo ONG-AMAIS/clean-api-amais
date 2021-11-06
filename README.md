@@ -1,4 +1,4 @@
-# backend
+# Backend
 
 ## To run:
 
@@ -12,4 +12,10 @@ $ export FLASK_ENV=development
 
 ```sh
 $ flask run
+```
+
+## To install all libs:
+
+```sh
+$ pip install -r requirements.txt
 ```
