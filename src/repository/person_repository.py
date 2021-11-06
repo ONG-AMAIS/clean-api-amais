@@ -1,8 +1,6 @@
-from typing import MutableSequence
-from model.entities import Person
-from config.store import MySqlStore
-from config.store import DatabaseSession
-
+from src.model.entities import Person
+from src.config.store import MySqlStore
+from src.config.store import DatabaseSession
 
 class PersonRepository(MySqlStore):
     def insert(self,name,cpf,rg,phone,email):

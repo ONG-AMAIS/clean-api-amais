@@ -5,3 +5,4 @@ pymysql
 sqlacodegen
 sqlalchemy
 flask_restful
+flask-cors
