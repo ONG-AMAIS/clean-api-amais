@@ -3,11 +3,10 @@ from flask_restful import Resource, reqparse
 
 from src.repository.person_repository import PersonRepository
 
-teste = [{'id':1, 'titulo':'teste titulo 1'}]
-
-class PersonResource(Resource):
+class PersonsResource(Resource):
     def get(self):
-        return teste, 200
+        person_repository = PersonRepository()
+        return {'message': 'Pessoa encontrada na base.', 'data': person_repository.get_person(person_id)}, 200
     
     @classmethod
     def post(self):
@@ -32,7 +31,7 @@ class PersonResource(Resource):
         )
         attributes.add_argument('email', type=str, required=False)                                                                
         attributes.add_argument('rg', type=str, required=False)
-        attributes.add_argument('active', type=bool)
+        # attributes.add_argument('active', type=bool)
 
         data = attributes.parse_args()
 
@@ -44,6 +43,13 @@ class PersonResource(Resource):
             return {'message': 'Pessoa criada na base', 'data': person_result}, 201
         except Exception as ex:
             traceback.print_exc()
+            print("oi")
             return {'message': f'An internal server error has occured: {ex}.'}, 500
 
  
+class PersonResource(Resource):
+    @classmethod
+    def get(self, person_id: int):
+        person_repository = PersonRepository()
+        return {'message': 'Pessoa encontrada na base.', 'data': person_repository.get_person(person_id)}, 200
+    
