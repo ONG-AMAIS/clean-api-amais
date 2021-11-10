@@ -1,6 +1,7 @@
 # coding: utf-8
 from sqlalchemy import CHAR, Column, DECIMAL, Float, Integer, String, TIMESTAMP, Table, Text, text
 from sqlalchemy.ext.declarative import declarative_base
+from json import JSONEncoder
 
 Base = declarative_base()
 metadata = Base.metadata
@@ -112,6 +113,7 @@ class Person(Base):
     email = Column(String(45))
     created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
     updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+
 
 
 class State(Base):
