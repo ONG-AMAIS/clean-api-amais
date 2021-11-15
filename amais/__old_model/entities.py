@@ -16,8 +16,10 @@ class Addres(Base):
     number = Column(String(10), nullable=False)
     complement = Column(String(10))
     id_city = Column(Integer, nullable=False, index=True)
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class AutismLevel(Base):
@@ -26,8 +28,10 @@ class AutismLevel(Base):
     id_autism_level = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
     description = Column(String(255))
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class City(Base):
@@ -36,13 +40,16 @@ class City(Base):
     id_city = Column(Integer, primary_key=True)
     id_state = Column(Integer, nullable=False, index=True)
     name = Column(String(45), nullable=False)
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 t_consultation_document = Table(
     'consultation_document', metadata,
-    Column('consultation_id_consultation', Integer, nullable=False, index=True),
+    Column('consultation_id_consultation',
+           Integer, nullable=False, index=True),
     Column('document_id_document', Integer, nullable=False, index=True)
 )
 
@@ -53,8 +60,10 @@ class Country(Base):
     id_country = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
     alpha_code = Column(String(3), nullable=False)
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class Day(Base):
@@ -62,8 +71,10 @@ class Day(Base):
 
     id_day = Column(Integer, primary_key=True)
     name = Column(String(45), nullable=False)
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class DaysAvailability(Base):
@@ -73,17 +84,22 @@ class DaysAvailability(Base):
     id_day = Column(Integer, nullable=False, index=True)
     id_voluntary = Column(Integer, nullable=False, index=True)
     schedule = Column(String(45), nullable=False)
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class Document(Base):
     __tablename__ = 'document'
 
     id_document = Column(Integer, primary_key=True)
-    url = Column(String(100), nullable=False, comment='Endereço do HTML do certificado')
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    url = Column(String(100), nullable=False,
+                 comment='Endereço do HTML do certificado')
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class Patient(Base):
@@ -98,8 +114,10 @@ class Patient(Base):
     id_address = Column(Integer, nullable=False, index=True)
     id_person = Column(Integer, nullable=False, index=True)
     id_autism_level = Column(Integer, nullable=False, index=True)
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class Person(Base):
@@ -111,9 +129,10 @@ class Person(Base):
     rg = Column(String(15))
     phone = Column(String(14), nullable=False)
     email = Column(String(45))
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
-
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class State(Base):
@@ -123,8 +142,10 @@ class State(Base):
     id_country = Column(Integer, nullable=False, index=True)
     name = Column(String(20), nullable=False)
     uf = Column(String(2), nullable=False)
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class Talk(Base):
@@ -133,10 +154,13 @@ class Talk(Base):
     id_talk = Column(Integer, primary_key=True)
     type_talk = Column(String(1), nullable=False, comment='Fisica ou online')
     duration_talk = Column(Integer, nullable=False)
-    talk_value = Column(Float(10, True), nullable=False, server_default=text("'0.00'"))
+    talk_value = Column(Float(10, True), nullable=False,
+                        server_default=text("'0.00'"))
     id_certificate = Column(Integer, nullable=False, index=True)
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class TalkAddres(Base):
@@ -145,8 +169,10 @@ class TalkAddres(Base):
     id_talk_address = Column(Integer, primary_key=True)
     id_address = Column(Integer, nullable=False, index=True)
     id_talk = Column(Integer, nullable=False, index=True)
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class TalkTheme(Base):
@@ -155,8 +181,10 @@ class TalkTheme(Base):
     id_talk_theme = Column(Integer, primary_key=True)
     id_theme = Column(Integer, nullable=False, index=True)
     id_talk = Column(Integer, nullable=False, index=True)
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class TalkVoluntary(Base):
@@ -165,8 +193,10 @@ class TalkVoluntary(Base):
     id_talk_voluntary = Column(Integer, primary_key=True)
     id_voluntary = Column(Integer, nullable=False, index=True)
     id_talk = Column(Integer, nullable=False, index=True)
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class Theme(Base):
@@ -175,8 +205,10 @@ class Theme(Base):
     id_theme = Column(Integer, primary_key=True)
     theme = Column(String(45), nullable=False)
     description = Column(Text)
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 
 
 class Therapist(Base):
@@ -213,7 +245,10 @@ class Voluntary(Base):
     id_voluntary = Column(Integer, primary_key=True)
     id_person = Column(Integer, nullable=False, index=True)
     occupation = Column(String(255), nullable=False)
-    url_document = Column(String(100), comment='Anexo de documento do voluntario com assinatura ')
+    url_document = Column(
+        String(100), comment='Anexo de documento do voluntario com assinatura ')
     description_occupation = Column(Text)
-    created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
-    updated_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+    created_at = Column(TIMESTAMP, nullable=False,
+                        server_default=text("CURRENT_TIMESTAMP"))
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=text(
+        "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))

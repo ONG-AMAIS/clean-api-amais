@@ -6,3 +6,5 @@ sqlacodegen
 sqlalchemy
 flask_restful
 flask-cors
+python-dotenv
+flask_sqlalchemy

@@ -17,7 +17,8 @@ class MySqlStore:
 
             for k, v in params.items():
                 if not hasattr(data, k):
-                    raise ValueError("Entity {} has not property `{}`.".format(entity.__class__.__name__, k))
+                    raise ValueError("Entity {} has not property `{}`.".format(
+                        entity.__class__.__name__, k))
                 setattr(data, k, v)
 
             session.commit()
