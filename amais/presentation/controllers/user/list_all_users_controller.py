@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from amais.presentation.helpers.http_helper import ok
-from amais.data.usecases.list_all_users import ListAllUsers
+from amais.data.usecases.user.list_all_users import ListAllUsers
 
 
 class ListAllUsersController(Resource):

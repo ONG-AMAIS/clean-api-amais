@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from amais.presentation.helpers.http_helper import created
 from flask_restful import Resource, reqparse
-from amais.data.usecases.create_user import CreateUser
+from amais.data.usecases.user.create_user import CreateUser
 
 
 class CreateUserController(Resource):

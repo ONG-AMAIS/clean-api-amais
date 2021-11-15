@@ -1,4 +1,4 @@
-from ..helper.config import db
+from ..helpers.config import db
 from .user_entity import User
 from sqlalchemy.sql import func
 
