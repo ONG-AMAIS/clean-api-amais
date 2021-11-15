@@ -1,4 +1,4 @@
-from ..helper.config import db
+from ..helpers.config import db
 
 
 class User(db.Model):

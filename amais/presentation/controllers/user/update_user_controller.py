@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from amais.presentation.helpers.http_helper import notFound, ok
 from flask_restful import Resource, reqparse
-from amais.data.usecases.update_user import UpdateUser
+from amais.data.usecases.user.update_user import UpdateUser
 
 
 class UpdateUserController(Resource):
