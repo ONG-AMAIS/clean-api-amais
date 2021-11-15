@@ -3,6 +3,7 @@ from amais.presentation.controllers.user.create_user_controller import CreateUse
 from amais.presentation.controllers.user.list_all_users_controller import ListAllUsersController
 from amais.presentation.controllers.user.update_user_controller import UpdateUserController
 from amais.presentation.controllers.user.delete_user_controller import DeleteUserController
+from amais.presentation.controllers.user.user_login_controller import UserLoginController
 
 
 def load_routes(api: Api):
@@ -10,3 +11,4 @@ def load_routes(api: Api):
     api.add_resource(ListAllUsersController, '/users')
     api.add_resource(UpdateUserController, '/users/<int:user_id>')
     api.add_resource(DeleteUserController, '/users/<int:user_id>')
+    api.add_resource(UserLoginController, '/login')
