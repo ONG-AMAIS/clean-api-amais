@@ -14,4 +14,4 @@ class DonationRepository():
     @ classmethod
     def get_all(cls):
         result = Donation.query.all()
-        return (({'donor': row.donor, 'value': row.value, 'description': row.value, }) for row in result)
+        return (({'donor': row.donor, 'value': row.value, 'description': row.description, }) for row in result)
