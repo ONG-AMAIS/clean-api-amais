@@ -6,8 +6,9 @@ from .user_entity import User
 
 class UserRepository():
     @classmethod
-    def insert(cls, login, password):
-        user = User(login=login, password=password, created_at=func.now())
+    def insert(cls,  login: str, password: str, user_type_id: int, person_id: int):
+        user = User(login=login, password=password, user_type_id=user_type_id,
+                    person_id=person_id, created_at=func.now())
         db.session.add(user)
         db.session.commit()
 
