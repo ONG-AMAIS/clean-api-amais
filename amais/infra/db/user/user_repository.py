@@ -16,7 +16,8 @@ class UserRepository():
 
     @classmethod
     def login(cls, login: str, password: str):
-        result = User.query.filter_by(login=login, password=password).first()
+        result = User.query.filter_by(
+            login=login, password=password, deleted_at=None).first()
 
         if not result:
             return None
