@@ -1,10 +1,10 @@
 from flask_restful import Resource
 from amais.presentation.helpers.http_helper import created
 from flask_restful import Resource, reqparse
-from amais.data.usecases.user.create_user import CreateUser
+from amais.data.usecases.user.create_collaborator import CreateCollaborator
 
 
-class CreateUserController(Resource):
+class CreateColaboratorController(Resource):
     @ classmethod
     def post(self):
         parser = reqparse.RequestParser()
@@ -12,13 +12,12 @@ class CreateUserController(Resource):
         parser.add_argument('password',  type=str)
         parser.add_argument('name',  type=str)
         parser.add_argument('cpf',  type=str)
-        parser.add_argument('type_id',  type=int)
         parser.add_argument('rg',  type=str)
         parser.add_argument('phone',  type=str)
         parser.add_argument('email',  type=str)
 
         args = parser.parse_args()
 
-        CreateUser().create(**args)
+        CreateCollaborator().create(**args)
 
         return created(message='Cadastro efetuado com sucesso!', payload={})
