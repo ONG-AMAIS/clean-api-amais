@@ -6,4 +6,4 @@ COPY ./requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 COPY . /app
 
-ENTRYPOINT [ "python3 -m flask run" ]
+ENTRYPOINT [ "python", "/app/app.py" ]
