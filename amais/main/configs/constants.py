@@ -1,5 +1,10 @@
-DATABASE = {'user': 'root',
-            'password': '1q2w3e4r',
-            'host': '172.17.0.3',
-            'port': '3306',
+from dotenv import dotenv_values
+
+config = dotenv_values('.env')
+
+
+DATABASE = {'user': config['DB_USER'],
+            'password': config['DB_PASSWORD'],
+            'host': config['DB_HOST'],
+            'port': config['DB_PORT'],
             'db_name': 'db_amais'}
