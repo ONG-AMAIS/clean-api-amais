@@ -1,5 +1,5 @@
 from flask_sqlalchemy.model import Model
-from ..helpers.config import db
+from ..helpers.connection import db
 
 
 class Person(db.Model):

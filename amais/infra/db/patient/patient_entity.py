@@ -1,4 +1,4 @@
-from ..helpers.config import db
+from ..helpers.connection import db
 
 
 class Patient(db.Model):

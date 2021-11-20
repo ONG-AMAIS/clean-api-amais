@@ -1,5 +1,7 @@
 from sqlalchemy.sql import func
-from ..helpers.config import db
+
+from amais.data.usecases import donation
+from ..helpers import db, format
 from .donation_entity import Donation
 
 
@@ -13,5 +15,9 @@ class DonationRepository():
 
     @ classmethod
     def get_all(cls):
-        result = Donation.query.all()
-        return (({'donor': row.donor, 'value': row.value, 'description': row.description, }) for row in result)
+        donations = Donation.query.all()
+        return format(cls.__donation_formatter, donations)
+
+    @classmethod
+    def __donation_formatter(cls, donation: Donation) -> dict:
+        return dict({'donor': donation.donor, 'value': donation.value, 'description': donation.description, })
