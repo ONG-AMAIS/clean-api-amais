@@ -2,13 +2,11 @@ from amais.__old_model.entities import Addres
 from amais.infra.db.user.user_repository import UserRepository
 from amais.infra.db.patient.patient_repository import PatientRepository
 from amais.infra.db.person.person_repository import PersonRepository
+from amais.domain.models.address import Addres
 import hashlib
 
 
 class CreatePatient:
-
-    Addres = {'street': str, 'district': str, 'number': str,
-              'complement': str | None, 'city': str, 'state': str}
 
     @classmethod
     def create(cls, name: str, cpf: str, phone: str, email: str,

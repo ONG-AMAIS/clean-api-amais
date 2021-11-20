@@ -16,50 +16,48 @@ class UserRepository():
 
     @classmethod
     def login(cls, login: str, password: str):
-        result = User.query.filter_by(
+        user = User.query.filter_by(
             login=login, password=password, deleted_at=None).first()
 
-        if not result:
+        if not user:
             return None
 
-        return result
+        return user
 
     @ classmethod
     def get_all(cls):
-        result = db.session.query(Person.name, Person.cpf, UserType.name, User.created_at).select_from(
+        users = db.session.query(Person.name, Person.cpf, UserType.name, User.created_at).select_from(
             User).join(Person, Person.person_id == User.person_id).join(UserType, UserType.user_type_id == User.user_type_id).all()
 
-        return cls.__format_generic_user(result)
+        return cls.__format_generic_user(users)
 
     @ classmethod
     def find_by_id(cls, id: int):
-        result = User.query.filter_by(user_id=id).first()
-        return cls.__format_user(result)
+        user = User.query.filter_by(user_id=id).first()
+        return cls.__format_user(user)
 
     @ classmethod
     def update_by_id(cls, id: int, login: str, password: str):
-        result = User.query.filter_by(user_id=id).first()
+        user = User.query.filter_by(user_id=id).first()
 
-        if not result:
+        if not user:
             return None
 
-        result.login = login
-        result.password = password
-        result.updated_at = func.now()
-
+        user.login = login
+        user.password = password
+        user.updated_at = func.now()
         db.session.commit()
 
-        return cls.__format_user(result)
+        return cls.__format_user(user)
 
     @ classmethod
     def delete_by_id(cls, id: int):
-        result = User.query.filter_by(user_id=id).first()
+        user = User.query.filter_by(user_id=id).first()
 
-        if not result:
+        if not user:
             return None
 
-        result.deleted_at = func.now()
-
+        user.deleted_at = func.now()
         db.session.commit()
 
     @ classmethod

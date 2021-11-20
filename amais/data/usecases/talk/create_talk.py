@@ -4,13 +4,11 @@ from amais.infra.db.certificate.certificate_repository import CertificateReposit
 from amais.main.configs.constants import UPLOAD_FOLDER
 from amais.utils.exceptions import Error
 from werkzeug.datastructures import FileStorage
+from amais.domain.models.address import Addres
 import secrets
 
 
 class CreateTalk:
-
-    Addres = {'street': str, 'district': str, 'number': str,
-              'complement': str | None, 'city': str, 'state': str}
 
     @classmethod
     def create(cls, title: str, description: str, duration: int, presenter_document: str, price: str | None, date: str, file: FileStorage, address: Addres):
