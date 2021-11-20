@@ -1,5 +1,5 @@
 from flask_restful import Resource
-from amais.presentation.helpers.http_helper import notFound, ok
+from amais.presentation.helpers.http_helper import not_found, ok
 from flask_restful import Resource, reqparse
 from amais.data.usecases.user.update_user import UpdateUser
 
@@ -18,6 +18,6 @@ class UpdateUserController(Resource):
             user_id, login=args['login'], password=args['password'])
 
         if not success:
-            return notFound('Usuário não encontrado.', payload={})
+            return not_found('Usuário não encontrado.', payload={})
 
         return ok(message='Usuário atualizado com sucesso!', payload={})

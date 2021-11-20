@@ -1,5 +1,6 @@
 {
   "cSpell.words": [
-    "pymysql"
+    "pymysql",
+    "werkzeug"
   ]
 }

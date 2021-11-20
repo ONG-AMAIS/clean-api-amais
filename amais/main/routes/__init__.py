@@ -11,6 +11,7 @@ from amais.presentation.controllers.donation.list_all_donations_controller impor
 from amais.presentation.controllers.talk.create_talk_controller import CreateTalkController
 from amais.presentation.controllers.talk.list_all_talks_controller import ListAllTalksController
 from amais.presentation.controllers.talk.list_all_talk_by_id_controller import ListTalkByIdController
+from amais.presentation.controllers.talk.create_talk_registration_controller import CreateTalkRegistrationController
 
 
 def load_routes(api: Api):
@@ -28,3 +29,5 @@ def load_routes(api: Api):
     api.add_resource(CreateTalkController, '/talks')
     api.add_resource(ListAllTalksController, '/talks')
     api.add_resource(ListTalkByIdController, '/talks/<int:talk_id>')
+    api.add_resource(CreateTalkRegistrationController,
+                     '/talks/<int:talk_id>/registrations')
