@@ -4,8 +4,8 @@ WORKDIR /app
 
 USER root
 
-COPY ./requirements.txt /app/requirements.txt
+COPY --chown=root:root ./requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
-COPY . /app
+COPY --chown=root:root . /app
 
 ENTRYPOINT [ "python", "/app/app.py" ]
