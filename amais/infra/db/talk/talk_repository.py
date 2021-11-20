@@ -11,8 +11,6 @@ class TalkRepository():
                     certificate_id=certificate_id,
                     address=address, created_at=func.now())
 
-        print(talk)
-
         db.session.add(talk)
         db.session.commit()
 

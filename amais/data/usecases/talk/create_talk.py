@@ -1,8 +1,10 @@
 from amais.infra.db.person.person_repository import PersonRepository
 from amais.infra.db.talk.talk_repository import TalkRepository
+from amais.infra.db.certificate.certificate_repository import CertificateRepository
 from amais.main.configs.constants import UPLOAD_FOLDER
 from amais.utils.exceptions import Error
 from werkzeug.datastructures import FileStorage
+import secrets
 
 
 class CreateTalk:
@@ -18,10 +20,18 @@ class CreateTalk:
         if not person:
             raise Error('PERSON_NOT_FOUND')
 
+        extension = file.filename.split('.')[1]
+        file_name = secrets.token_hex(32)
+
+        file_name_with_extension = "{file_name}.{extension}".format(
+            file_name=file_name, extension=extension)
+
         file.save("{upload_folder}{file_name}".format(
-            upload_folder=UPLOAD_FOLDER, file_name=file.filename))
+            upload_folder=UPLOAD_FOLDER, file_name=file_name_with_extension))
+
+        certificete = CertificateRepository().insert(file_name=file_name_with_extension)
 
         TalkRepository().insert(address=address, date=date, title=title,
                                 description=description, duration=duration,
                                 person_id=person['id'],
-                                price=price, certificate_id=1)
+                                price=price, certificate_id=certificete['id'])

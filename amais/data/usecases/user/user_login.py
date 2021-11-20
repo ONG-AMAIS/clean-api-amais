@@ -8,5 +8,4 @@ class UserLogin:
         pass_hash = hashlib.sha256(
             password.encode('UTF-8')).hexdigest()
         result = UserRepository().login(login=login, password=pass_hash)
-        print(result)
         return result != None
