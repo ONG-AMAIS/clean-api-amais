@@ -13,6 +13,10 @@ def not_found(message, payload):
     return {'message': message, 'payload': payload}, 404
 
 
+def bad_request(message, payload):
+    return {'message': message, 'payload': payload}, 400
+
+
 def unauthorized(message, payload):
     return {'message': message, 'payload': payload}, 401
 

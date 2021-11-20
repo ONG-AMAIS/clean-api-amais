@@ -1,5 +1,5 @@
 from flask_restful import Resource
-from amais.presentation.helpers.http_helper import created, not_found
+from amais.presentation.helpers.http_helper import created, not_found, bad_request
 from flask_restful import Resource, reqparse
 from amais.data.usecases.talk.create_talk import CreateTalk
 from werkzeug.datastructures import FileStorage
@@ -33,7 +33,9 @@ class CreateTalkController(Resource):
             return created(message='Cadastro efetuado com sucesso!', payload={})
 
         except Error as error:
-            CASES = {'PERSON_NOT_FOUND': not_found(
-                message='Cliente não encontrado.', payload={})}
+            CASES = {
+                'PERSON_NOT_FOUND': not_found(message='Cliente não encontrado.', payload={}),
+                'EXTENSION_NOT_ALLOWED': bad_request(message='Extensão não permitida, envie um template html.', payload={})
+            }
 
             return CASES[error.title]
