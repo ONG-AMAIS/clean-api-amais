@@ -1,5 +1,5 @@
 from sqlalchemy.sql import func
-from ..helpers.config import db
+from ..helpers import db, format
 from .patient_entity import Patient
 
 
@@ -17,8 +17,8 @@ class PatientRepository():
     @ classmethod
     def find_by_person_id(cls, person_id: int):
         patient = Patient.query.filter_by(person_id=person_id).first()
-        return cls.__format_voluntary(patient)
+        return format(cls.__voluntary_formatter, patient)
 
     @classmethod
-    def __format_voluntary(cls, patient: Patient) -> dict:
-        return {'id': patient.patient_id, 'person_id': patient.person_id}
+    def __voluntary_formatter(cls, patient: Patient) -> dict:
+        return dict({'id': patient.patient_id, 'person_id': patient.person_id})

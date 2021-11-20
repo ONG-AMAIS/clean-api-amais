@@ -1,5 +1,5 @@
 from sqlalchemy.sql import func
-from ..helpers.config import db
+from ..helpers import db, format
 from .talk_entity import Talk
 
 
@@ -20,25 +20,27 @@ class TalkRepository():
         if not talk:
             return None
 
-        return cls.__format_talk(talk)
+        return format(cls.__talk_formatter, talk)
 
     @ classmethod
     def get_all(cls):
-        talk = Talk.query.all()
+        talks = Talk.query.all()
+        if not talks:
+            return None
+
+        return format(cls.__talk_formatter, talks)
+
+    @ classmethod
+    def find_by_id(cls, talk_id: int):
+        talk = Talk.query.filter_by(talk_id=talk_id).first()
         if not talk:
             return None
 
-        return cls.__format_talk(talk)
+        return format(cls.__talk_formatter, talk)
 
     @classmethod
-    def __format_talk(cls, talk: Talk) -> dict:
-        if isinstance(talk, list):
-            return (({'id': item.talk_id, 'title': item.title,
-                      'price': item.price, 'duration': item.duration,
-                      'description': item.description, 'date': str(item.date),
-                      'created_at': str(item.created_at)}) for item in talk)
-
-        return {'id': talk.talk_id, 'title': talk.title,
-                'title': talk.title, 'price': talk.price,
-                'date': str(talk.date), 'duration': talk.duration,
-                'description': talk.description, 'created_at': str(talk.created_at)}
+    def __talk_formatter(cls, item: Talk) -> dict:
+        return dict({'id': item.talk_id, 'title': item.title,
+                    'price': item.price, 'duration': item.duration,
+                     'description': item.description, 'date': str(item.date),
+                     'created_at': str(item.created_at)})

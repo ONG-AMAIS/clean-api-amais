@@ -1,5 +1,5 @@
 from sqlalchemy.sql import func
-from ..helpers.config import db
+from ..helpers import db, format
 from .certificate_entity import Certificate
 
 
@@ -10,8 +10,8 @@ class CertificateRepository():
         db.session.add(certificate)
         db.session.commit()
 
-        return cls.__format_certificate(certificate)
+        return format(cls.__certificate_formatter, certificate)
 
     @classmethod
-    def __format_certificate(cls, certificate: Certificate) -> dict:
-        return {'id': certificate.certificate_id, 'created_at': certificate.created_at}
+    def __certificate_formatter(cls, certificate: Certificate) -> dict:
+        return dict({'id': certificate.certificate_id, 'created_at': certificate.created_at})
