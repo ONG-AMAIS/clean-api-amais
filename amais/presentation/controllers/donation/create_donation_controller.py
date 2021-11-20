@@ -14,8 +14,6 @@ class CreateDonationController(Resource):
 
         args = parser.parse_args()
 
-        print(args)
-
         CreateDonation().create(
             description=args['description'], value=args['value'], donor=args['donor'])
 
