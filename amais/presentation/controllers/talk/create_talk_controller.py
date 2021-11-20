@@ -1,5 +1,5 @@
 from flask_restful import Resource
-from amais.presentation.helpers.http_helper import created, notFound
+from amais.presentation.helpers.http_helper import created, not_found
 from flask_restful import Resource, reqparse
 from amais.data.usecases.talk.create_talk import CreateTalk
 from werkzeug.datastructures import FileStorage
@@ -33,7 +33,7 @@ class CreateTalkController(Resource):
             return created(message='Cadastro efetuado com sucesso!', payload={})
 
         except Error as error:
-            CASES = {'PERSON_NOT_FOUND': notFound(
+            CASES = {'PERSON_NOT_FOUND': not_found(
                 message='Cliente não encontrado.', payload={})}
 
             return CASES[error.title]
