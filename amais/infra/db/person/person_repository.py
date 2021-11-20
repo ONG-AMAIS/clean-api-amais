@@ -17,6 +17,14 @@ class PersonRepository():
         return cls.__format_person(current_person)
 
     @classmethod
+    def find_by_document(cls, cpf: str):
+        person = Person.query.filter_by(cpf=cpf).first()
+        return cls.__format_person(person)
+
+    @classmethod
     def __format_person(cls, person: Person) -> dict:
+        if not person:
+            return None
+
         return {'id': person.person_id, 'name': person.name, 'cpf': person.cpf,
                 'rg': person.rg,  'phone': person.phone, 'email': person.email}
