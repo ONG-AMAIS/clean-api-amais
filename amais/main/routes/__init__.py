@@ -9,6 +9,7 @@ from amais.presentation.controllers.user.user_login_controller import UserLoginC
 from amais.presentation.controllers.donation.create_donation_controller import CreateDonationController
 from amais.presentation.controllers.donation.list_all_donations_controller import ListAllDonationsController
 from amais.presentation.controllers.talk.create_talk_controller import CreateTalkController
+from amais.presentation.controllers.talk.list_all_talks_controller import ListAllTalksController
 
 
 def load_routes(api: Api):
@@ -24,3 +25,4 @@ def load_routes(api: Api):
     api.add_resource(ListAllDonationsController, '/donations')
 
     api.add_resource(CreateTalkController, '/talks')
+    api.add_resource(ListAllTalksController, '/talks')

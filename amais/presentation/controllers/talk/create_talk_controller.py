@@ -9,7 +9,6 @@ from amais.utils.exceptions import Error
 class CreateTalkController(Resource):
     @ classmethod
     def post(cls):
-
         try:
             parser = reqparse.RequestParser()
             parser.add_argument('title', type=str)
