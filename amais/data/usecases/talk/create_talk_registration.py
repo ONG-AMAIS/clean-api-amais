@@ -14,7 +14,9 @@ class CreateTalkRegistration:
             raise Error('TALK_NOT_FOUND')
 
         talkSubscriptionRepository = TalkSubscriptionRepository()
-        registration = talkSubscriptionRepository.find_by_document(cpf)
+
+        registration = talkSubscriptionRepository.find_by_document_and_talk_id(
+            cpf=cpf, talk_id=talk_id)
 
         if registration:
             raise Error('REGISTER_ALREADY_EXISTS')

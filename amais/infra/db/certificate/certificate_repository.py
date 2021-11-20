@@ -12,6 +12,12 @@ class CertificateRepository():
 
         return format(cls.__certificate_formatter, certificate)
 
+    @ classmethod
+    def find_by_id(cls, certificate_id: int):
+        certificate = Certificate.query.filter_by(
+            certificate_id=certificate_id).first()
+        return format(cls.__certificate_formatter, certificate)
+
     @classmethod
     def __certificate_formatter(cls, certificate: Certificate) -> dict:
-        return dict({'id': certificate.certificate_id, 'created_at': certificate.created_at})
+        return dict({'id': certificate.certificate_id, 'file_name': certificate.file_name, 'created_at': certificate.created_at})

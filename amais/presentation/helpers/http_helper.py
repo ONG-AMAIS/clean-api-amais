@@ -1,3 +1,6 @@
+from flask import render_template, make_response
+
+
 def ok(message, payload):
     return {'message': message, 'payload': payload}, 200
 
@@ -16,3 +19,8 @@ def unauthorized(message, payload):
 
 def unprocessable_entity(message, payload):
     return {'message': message, 'payload': payload}, 422
+
+
+def render(template: str, **variables):
+    headers = {'Content-Type': 'text/html'}
+    return make_response(render_template(template, **variables), 200, headers)

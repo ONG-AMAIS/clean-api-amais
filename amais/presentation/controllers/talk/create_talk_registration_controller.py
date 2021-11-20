@@ -2,7 +2,6 @@ from flask_restful import Resource
 from amais.presentation.helpers.http_helper import created, not_found, unprocessable_entity
 from flask_restful import Resource, reqparse
 from amais.data.usecases.talk.create_talk_registration import CreateTalkRegistration
-from werkzeug.datastructures import FileStorage
 from amais.utils.exceptions import Error
 
 
