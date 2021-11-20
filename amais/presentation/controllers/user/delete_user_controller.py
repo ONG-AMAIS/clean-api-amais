@@ -8,7 +8,7 @@ class DeleteUserController(Resource):
     @classmethod
     def delete(self, user_id: int):
 
-        success = DeleteUser().delete(id=user_id)
+        success = DeleteUser().delete(user_id)
 
         if not success:
             return notFound('Usuário não encontrado.', payload={})
