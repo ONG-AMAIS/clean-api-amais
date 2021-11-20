@@ -19,6 +19,10 @@ class CreateTalk:
             raise Error('PERSON_NOT_FOUND')
 
         extension = file.filename.split('.')[1]
+
+        if extension != 'html':
+            raise Error('EXTENSION_NOT_ALLOWED')
+
         file_name = secrets.token_hex(32)
 
         file_name_with_extension = "{file_name}.{extension}".format(
@@ -27,9 +31,9 @@ class CreateTalk:
         file.save("{upload_folder}{file_name}".format(
             upload_folder=UPLOAD_FOLDER, file_name=file_name_with_extension))
 
-        certificete = CertificateRepository().insert(file_name=file_name_with_extension)
+        certificate = CertificateRepository().insert(file_name=file_name_with_extension)
 
         TalkRepository().insert(address=address, date=date, title=title,
                                 description=description, duration=duration,
                                 person_id=person['id'],
-                                price=price, certificate_id=certificete['id'])
+                                price=price, certificate_id=certificate['id'])
