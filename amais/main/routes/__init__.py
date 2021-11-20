@@ -12,6 +12,7 @@ from amais.presentation.controllers.talk.create_talk_controller import CreateTal
 from amais.presentation.controllers.talk.list_all_talks_controller import ListAllTalksController
 from amais.presentation.controllers.talk.list_all_talk_by_id_controller import ListTalkByIdController
 from amais.presentation.controllers.talk.create_talk_registration_controller import CreateTalkRegistrationController
+from amais.presentation.controllers.talk.get_talk_certificate_controller import GetTalkCertificateController
 
 
 def load_routes(api: Api):
@@ -31,3 +32,5 @@ def load_routes(api: Api):
     api.add_resource(ListTalkByIdController, '/talks/<int:talk_id>')
     api.add_resource(CreateTalkRegistrationController,
                      '/talks/<int:talk_id>/registrations')
+    api.add_resource(GetTalkCertificateController,
+                     '/talks/<int:talk_id>/entrants/<int:cpf>')

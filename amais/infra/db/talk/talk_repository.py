@@ -42,5 +42,6 @@ class TalkRepository():
     def __talk_formatter(cls, item: Talk) -> dict:
         return dict({'id': item.talk_id, 'title': item.title,
                     'price': item.price, 'duration': item.duration,
+                     'certificate_id': item.certificate_id,
                      'description': item.description, 'date': str(item.date),
                      'created_at': str(item.created_at)})

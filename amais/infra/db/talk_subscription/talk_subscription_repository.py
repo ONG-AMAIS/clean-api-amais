@@ -13,8 +13,9 @@ class TalkSubscriptionRepository():
         db.session.commit()
 
     @ classmethod
-    def find_by_document(cls, cpf: str):
-        talk = TalkSubscription.query.filter_by(cpf=cpf).first()
+    def find_by_document_and_talk_id(cls, cpf: str, talk_id: int):
+        talk = TalkSubscription.query.filter_by(
+            cpf=cpf, talk_id=talk_id).first()
         return format(cls.__talk_formatter, talk)
 
     @ classmethod
