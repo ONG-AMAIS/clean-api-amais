@@ -20,4 +20,4 @@ class DonationRepository():
 
     @classmethod
     def __donation_formatter(cls, donation: Donation) -> dict:
-        return dict({'donor': donation.donor, 'value': donation.value, 'description': donation.description, })
+        return dict({'id': donation.donation_id, 'donor': donation.donor, 'value': donation.value, 'description': donation.description, 'created_at': str(donation.created_at)})
