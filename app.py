@@ -1,15 +1,5 @@
-from flask import Flask
-from flask_restful import Api
-from flask_cors import CORS
-
-from src.resource.person_resource import PersonsResource, PersonResource
-
-APP = Flask(__name__)
-API = Api(APP)
-CORS(APP)
-
-API.add_resource(PersonsResource, '/persons')
-API.add_resource(PersonResource, '/person/<int:person_id>')
+from amais.main.server import app
+from amais.main.configs.constants import ALLOW_DEBUG, PORT
 
 if __name__ == '__main__':
-    APP.run(debug=True)
+    app.run(host='0.0.0.0', port=PORT, debug=ALLOW_DEBUG)
