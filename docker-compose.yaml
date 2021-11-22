@@ -13,10 +13,16 @@ services:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
+    volumes:
+      - db-data:/var/lib/mysql/data
     ports:
       - 3306:3306
     env_file:
       - .env
+
+volumes:
+  db-data:
+      
 
 
       
