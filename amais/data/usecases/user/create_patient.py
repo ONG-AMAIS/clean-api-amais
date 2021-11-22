@@ -1,4 +1,3 @@
-from amais.__old_model.entities import Addres
 from amais.infra.db.user.user_repository import UserRepository
 from amais.infra.db.patient.patient_repository import PatientRepository
 from amais.infra.db.person.person_repository import PersonRepository

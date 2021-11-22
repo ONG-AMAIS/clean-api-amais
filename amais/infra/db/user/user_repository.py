@@ -88,7 +88,7 @@ class UserRepository():
     @ classmethod
     def user_formatter_with_person_rel(cls, user: User) -> dict:
         return dict({'id': user.user_id, 'name': user.name,
-                     'document': user.cpf, 'type': user[2],
+                     'document': user.cpf, 'type': user[3],
                      'created_at': str(user.created_at)})
 
     @ classmethod
